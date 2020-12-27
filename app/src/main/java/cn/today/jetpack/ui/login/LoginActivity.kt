@@ -11,14 +11,17 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        initFragment()
     }
-    
-    private fun initFragment() {
 
+    private fun initFragment() {
+        supportFragmentManager.apply {
+            findFragmentByTag(TAG) ?: beginTransaction().add(R.id.flContainer, LoginFragment())
+                .commitAllowingStateLoss()
+        }
     }
 
     companion object {
-        private const val TAG = "LoginActivity"
+        private const val TAG = "LoginFragment"
     }
 }

@@ -48,6 +48,11 @@ dependencies {
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    api AndroidX.activity
+    api AndroidX.activityKtx
+    api Fragment.runtime
+    api Fragment.runtimeKtx
+
     api Hilt.viewModule
     kapt Hilt.compiler
 
@@ -67,6 +72,7 @@ dependencies {
     api Room.runtime
     api Room.ktx
     kapt Room.compiler
+
 
     api Navigation.fragmentKtx
     api Navigation.uiKtx

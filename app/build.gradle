@@ -1,13 +1,15 @@
-import cn.today.version.plugin.*
-
 plugins {
     id 'cn.today.version.plugin'
     id 'com.android.application'
     id 'kotlin-android'
     id "kotlin-kapt"
+    id 'kotlin-android-extensions'
     id "dagger.hilt.android.plugin"
     id "com.google.protobuf"
 }
+
+
+import cn.today.version.plugin.*
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion//rootProject.ext.android["compileSdkVersion"]
@@ -45,12 +47,6 @@ android {
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
-    }
-    buildFeatures {
-        viewBinding true
-    }
-    kapt {
-        correctErrorTypes true
     }
 }
 
