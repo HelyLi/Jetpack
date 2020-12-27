@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main">
+
+    <fragment
+        android:id="@+id/nav_main"
+        android:name="cn.today.jetpack.demo.Page1Fragment"
+        android:label="MainFragment"
+        tools:layout="@layout/activity_main" />
+
+</navigation>

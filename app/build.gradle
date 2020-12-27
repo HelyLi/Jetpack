@@ -1,0 +1,90 @@
+import cn.today.version.plugin.*
+
+plugins {
+    id 'cn.today.version.plugin'
+    id 'com.android.application'
+    id 'kotlin-android'
+    id "kotlin-kapt"
+    id "dagger.hilt.android.plugin"
+    id "com.google.protobuf"
+}
+
+android {
+    compileSdkVersion BuildConfig.compileSdkVersion//rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion BuildConfig.buildToolsVersion
+
+    defaultConfig {
+        applicationId "cn.today.jetpack"
+        minSdkVersion BuildConfig.minSdkVersion
+        targetSdkVersion BuildConfig.targetSdkVersion
+        versionCode BuildConfig.versionCode
+        versionName BuildConfig.versionName
+
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        buildConfigField "String", "USER_ACCESS_TOKEN", properties.getProperty("USER_ACCESS_TOKEN")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    kapt {
+        correctErrorTypes true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':architecture')
+    implementation project(':protobuf')
+
+    implementation Kt.stdlibJdk8
+    implementation AndroidX.coreKtx
+    implementation AndroidX.appcompat
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation AndroidX.constraintlayout
+    testImplementation Depend.junit//rootProject.ext.dependencies['junit']
+    androidTestImplementation Depend.androidTestJunit//'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation Depend.espressoCore//'androidx.test.espresso:espresso-core:3.3.0'
+
+
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.cpacm:floatingmusicmenu:1.0.0'
+
+    implementation Depend.stetho//rootProject.ext.dependencies['stetho']
+
+//    debugImplementation rootProject.ext.dependencies['leakcanaryDebug']
+//    debugImplementation rootProject.ext.dependencies['leakcanaryDebugSupport']
+//    releaseImplementation rootProject.ext.dependencies['leakcanaryRelease']
+
+    debugImplementation Depend.leakcanary
+
+    kapt Glide.compiler//rootProject.ext.dependencies['glide-compiler']
+    kapt Room.compiler//rootProject.ext.dependencies['room-compiler']
+    kapt Lifecycle.compiler//rootProject.ext.dependencies['lifecycle-compiler']
+
+    implementation Hilt.daggerRuntime//rootProject.ext.dependencies['hilt-android']
+    kapt Hilt.daggerCompiler//rootProject.ext.dependencies['hilt-android-compiler']
+    kapt Hilt.compiler//rootProject.ext.dependencies['hilt-compiler']
+}

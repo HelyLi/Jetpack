@@ -1,0 +1,78 @@
+import cn.today.version.plugin.*
+
+plugins {
+    id 'cn.today.version.plugin'
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+//    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion BuildConfig.compileSdkVersion
+    buildToolsVersion BuildConfig.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion BuildConfig.minSdkVersion
+        targetSdkVersion BuildConfig.targetSdkVersion
+        versionCode BuildConfig.versionCode
+        versionName BuildConfig.versionName
+
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation Kt.stdlibJdk8
+    implementation AndroidX.coreKtx
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'com.google.android.material:material:1.2.1'
+//    testImplementation 'junit:junit:4.+'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    api Hilt.viewModule
+    kapt Hilt.compiler
+
+    api Retrofit.runtime
+    api Retrofit.gson
+    api Retrofit.logging
+
+    api Lifecycle.extensions
+    api Lifecycle.commonJava8
+    api Lifecycle.runtimeKtx
+
+    api Lifecycle.livedata
+    api Lifecycle.livedataKtx
+
+    api Paging.runtime
+
+    api Room.runtime
+    api Room.ktx
+    kapt Room.compiler
+
+    api Navigation.fragmentKtx
+    api Navigation.uiKtx
+
+    api Glide.runtime
+    api Glide.compiler
+
+    api Depend.timber
+}

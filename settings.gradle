@@ -1,0 +1,5 @@
+includeBuild("../VersionPlugin")
+include ':architecture'
+include ':protobuf'
+include ':app'
+rootProject.name = "Jetpack"
