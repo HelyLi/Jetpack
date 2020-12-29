@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/nav_main"
-        android:name="cn.today.jetpack.demo.Page1Fragment"
+        android:name="cn.today.jetpack.ui.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/activity_main" />
 

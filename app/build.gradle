@@ -63,7 +63,7 @@ dependencies {
     testImplementation Depend.junit//rootProject.ext.dependencies['junit']
     androidTestImplementation Depend.androidTestJunit//'androidx.test.ext:junit:1.1.2'
     androidTestImplementation Depend.espressoCore//'androidx.test.espresso:espresso-core:3.3.0'
-
+    implementation AndroidX.swiperefreshlayout
 
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.cpacm:floatingmusicmenu:1.0.0'
