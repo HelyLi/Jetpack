@@ -11,6 +11,7 @@ import cn.today.architecture.base.view.fragment.BaseFragment
 import cn.today.architecture.ext.observe
 import cn.today.jetpack.R
 import cn.today.jetpack.http.Errors
+import cn.today.jetpack.ui.MainActivity
 import cn.today.jetpack.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -42,6 +43,7 @@ class LoginFragment : BaseFragment() {
 
     private fun binds() {
         mBtnSignIn.setOnClickListener {
+            println("username:" + tvUsername.text.toString() + ",password:" + tvPassword.text.toString())
             mViewModel.login(tvUsername.text.toString(), tvPassword.text.toString())
         }
 
@@ -73,7 +75,7 @@ class LoginFragment : BaseFragment() {
         mProgressBar.visibility = if (state.isLoading) View.VISIBLE else View.GONE
 
         if (state.loginInfo != null) {
-
+            MainActivity.launch(requireActivity())
         }
     }
 }

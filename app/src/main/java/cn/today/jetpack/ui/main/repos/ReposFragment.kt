@@ -16,9 +16,10 @@ import kotlinx.android.synthetic.main.fragment_repos.*
 
 @AndroidEntryPoint
 class ReposFragment : BaseFragment() {
-    override val layoutId: Int = R.layout.fragment_profile
 
     private val mViewModel: ReposViewModel by viewModels()
+
+    override val layoutId: Int = R.layout.fragment_repos
 
     private val mAdapter = ReposPagedAdapter()
 

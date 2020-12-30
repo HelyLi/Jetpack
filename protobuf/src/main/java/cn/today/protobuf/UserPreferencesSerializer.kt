@@ -17,7 +17,5 @@ object UserPreferencesSerializer : Serializer<UserPreferencesProtos.UserPreferen
     }
 
     override fun writeTo(t: UserPreferencesProtos.UserPreferences, output: OutputStream) = t.writeTo(output)
-
-    override val defaultValue: UserPreferencesProtos.UserPreferences
-        get() = TODO("Not yet implemented")
+    override val defaultValue: UserPreferencesProtos.UserPreferences = UserPreferencesProtos.UserPreferences.getDefaultInstance()
 }

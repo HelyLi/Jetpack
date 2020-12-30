@@ -10,8 +10,10 @@ import cn.today.architecture.ext.jumpBrowser
 import cn.today.architecture.ext.observe
 import cn.today.jetpack.R
 import cn.today.jetpack.utils.removeAllAnimation
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment() {
     private val mViewModel: HomeViewModel by viewModels()
 
@@ -23,7 +25,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         toolbar.inflateMenu(R.menu.menu_home_search)
         binds()
-        
+
         mRecyclerView.adapter = mAdapter
         mRecyclerView.removeAllAnimation()
     }
