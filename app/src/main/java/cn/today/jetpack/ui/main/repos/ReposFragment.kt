@@ -61,12 +61,12 @@ class ReposFragment : BaseFragment() {
 
     private fun onMenuSelected(menuItem: MenuItem) {
         val isKeyUpdated = mViewModel.setSortKey(
-                when (menuItem.itemId) {
-                    R.id.menu_repos_letter -> ReposViewModel.sortByLetter
-                    R.id.menu_repos_update -> ReposViewModel.sortByUpdate
-                    R.id.menu_repos_created -> ReposViewModel.sortByCreated
-                    else -> throw IllegalArgumentException("failure menuItem id.")
-                }
+            when (menuItem.itemId) {
+                R.id.menu_repos_letter -> ReposViewModel.sortByLetter
+                R.id.menu_repos_update -> ReposViewModel.sortByUpdate
+                R.id.menu_repos_created -> ReposViewModel.sortByCreated
+                else -> throw IllegalArgumentException("failure menuItem id.")
+            }
         )
         if (isKeyUpdated)
             mAdapter.refresh()
